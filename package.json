@@ -1,0 +1,21 @@
+{
+  "name": "fastify-ts",
+  "version": "1.0.0",
+  "description": "Api with fastify in last version with ts",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "ts-node-dev src/index.ts",
+    "start": "node build/index.js"
+  },
+  "author": "Juan Jose Vega <juanjosevegaquintero@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.0.1",
+    "dotenv": "16.0.1",
+    "typescript": "4.7.4" 
+  }
+}
