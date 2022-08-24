@@ -1,15 +1,21 @@
 import Fastify, { FastifyInstance } from 'fastify';
+import Autoload from 'fastify-autoload';
 import os from 'os';
 
-const server: FastifyInstance = Fastify({ logger: true });
+import diaryRouter from './routes/diaries'
+
+const server = Fastify({ logger: true });
 
 server.get('/ping', async (_, res) => {
   res.send('pong')
   return { pong: 'it worked!', instance: os };
 });
+server.register(require(diaryRouter), { prefix: 'api/' });
 
 const start = async () => {
   try {
+    // server.register(Autoload, { dir: path.join(__dirname, 'routes') });
+
     await server.listen({ port: 3000 });
 
     const address = server.server.address();
