@@ -19,3 +19,11 @@ export const findById = (id: number): NonSensitiveInfoDiaryEntry[] => {
     };
   });
 };
+
+export const addDiary = (NewDiaryEntry: NewDiaryEntry) => {
+  const newDiary = {
+    id: Math.max(...diaries.map(d => d.id)) + 1,
+    ...NewDiaryEntry
+  };
+  return newDiary;
+};
