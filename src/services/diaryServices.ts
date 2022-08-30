@@ -21,6 +21,17 @@ export const findById = (
   return undefined;
 };
 
+export const getEntriesWithoutSensitiveInfo = (): NonSensitiveInfoDiaryEntry[] => {
+  return diaries.map(({ id, date, weather, visibility }) => {
+    return {
+      id,
+      date,
+      weather,
+      visibility
+    }
+  })
+}
+
 export const addDiary = (NewDiaryEntry: NewDiaryEntry): DiaryEntry => {
   const newDiary = {
     id: Math.max(...diaries.map(d => d.id)) + 1,
