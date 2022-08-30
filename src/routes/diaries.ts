@@ -1,22 +1,27 @@
-import fastify from 'fastify';
-import * as diaryServices from '../services/diaryServices'
+import * as diaryServices from '../services/diaryServices';
 import toNewDiaryEntry from '../utils';
 
-const server = fastify();
+async function dairies(server) {
+  server.get('/', {}, async (_request, reply) => {
+    reply.send(diaryServices.getEntriesWithoutSensitiveInfo);
+  });
 
-server.get('/', {}, async (_request, reply) => {
-  reply.send();
-});
+  server.get(':/id', (request, reply) => {
+    const diary = diaryServices.findById(+request.params.id);
 
-server.post('/', {}, async (request, reply) => {
-  try {
-    const NewDiaryEntry = toNewDiaryEntry(request.body);
-    const addedDiaryEntry = diaryServices.addDiary(NewDiaryEntry);
+    return diary != null ? reply.send(diary) : reply.sendStatus(404);
+  });
 
-    reply.send(addedDiaryEntry);
-  } catch (error) {
-    reply.status(400).send(error);
-  }
-});
+  server.post('/', {}, async (request, reply) => {
+    try {
+      const NewDiaryEntry = toNewDiaryEntry(request.body);
+      const addedDiaryEntry = diaryServices.addDiary(NewDiaryEntry);
 
-export default server;
+      reply.send(addedDiaryEntry);
+    } catch (error) {
+      reply.status(400).send(error);
+    }
+  });
+}
+
+export default diaries;
