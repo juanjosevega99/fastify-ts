@@ -24,4 +24,4 @@ async function dairies(server) {
   });
 }
 
-export default diaries;
+export default dairies;
