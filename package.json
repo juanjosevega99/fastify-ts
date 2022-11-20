@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Api with fastify in last version with ts",
   "main": "index.js",
+  "engines": {
+    "node": "18.12.1"
+  },
   "scripts": {
     "tsc": "tsc",
     "dev": "ts-node-dev src/index.ts",
@@ -11,7 +14,7 @@
   "author": "Juan Jose Vega <juanjosevegaquintero@hotmail.com>",
   "license": "MIT",
   "dependencies": {
-    "fastify": "4.2.0",
+    "fastify": "4.10.0",
     "fastify-autoload": "3.13.0"
   },
   "devDependencies": {
