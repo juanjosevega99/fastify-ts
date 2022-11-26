@@ -5,6 +5,14 @@ const isString = (string: string): boolean => {
   return typeof string === 'string';
 };
 
+const isDate = (date: string): boolean => {
+  return Boolean(Date.parse(date));
+};
+
+const isVisibility = (param: any): boolean => {
+  return Object.values(Visibility).includes(param);
+};
+
 const parseComment = (commentFromRequest: any): string => {
   if (!isString(commentFromRequest)) {
     throw new Error('Incorrect or missing comment ');
