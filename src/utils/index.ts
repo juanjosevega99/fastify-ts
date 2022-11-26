@@ -9,8 +9,20 @@ const isDate = (date: string): boolean => {
   return Boolean(Date.parse(date));
 };
 
+const isWeather = (param: any): boolean => {
+  return Object.values(Weather).includes(param);
+};
+
 const isVisibility = (param: any): boolean => {
   return Object.values(Visibility).includes(param);
+};
+
+const parseDate = (dateFromRequest: any): string => {
+  if (!isString(dateFromRequest) || !isDate(dateFromRequest)) {
+    throw new Error('Incorrect or missing date');
+  }
+
+  return dateFromRequest;
 };
 
 const parseComment = (commentFromRequest: any): string => {
