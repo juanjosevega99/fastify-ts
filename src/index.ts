@@ -1,5 +1,4 @@
 import Fastify, { FastifyInstance } from 'fastify';
-import Autoload from 'fastify-autoload';
 import os from 'os';
 
 import diaryRouter from './routes/diaries'
